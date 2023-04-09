@@ -32,7 +32,8 @@ const Signup = ({toastFunction}) => {
 
     const handelModalSubmit = async () => {
       // console.log(id);
-      const url = "http://localhost:5000/signup";
+      // const url = "http://localhost:5000/signup";
+      const url = "https://graphicalpasswordbackend.onrender.com/signup";
       const data = { id, theme, email, links };
 
       console.log("data = ", data);

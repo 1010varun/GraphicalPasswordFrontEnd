@@ -28,7 +28,8 @@ const Login = ({ toastFunction }) => {
         
     };
 
-    const URL = `http://localhost:5000/login`;
+    // const URL = `http://localhost:5000/login`;
+    const URL = `https://graphicalpasswordbackend.onrender.com/login`;
 
     const handelSubmit = async () => {
         
@@ -65,11 +66,12 @@ const Login = ({ toastFunction }) => {
   };
 
     const handelModalSubmit = async () => {
-      console.log("inside login handelmodalFunction");
-    const url = "http://localhost:5000/loginVerify";
+      // console.log("inside login handelmodalFunction");
+    // const url = "http://localhost:5000/loginVerify";
+    const url = "https://graphicalpasswordbackend.onrender.com/loginVerify";
       const data = { id, theme };
       
-      console.log("data = ", data);
+      // console.log("data = ", data);
 
       const repos = await axios
         .post(url, data)
