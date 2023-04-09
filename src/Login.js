@@ -71,9 +71,14 @@ const Login = ({ toastFunction }) => {
       
       console.log("data = ", data);
 
-    await axios
-      .post(url, data)
-    setShowModal(false);
+      const repos = await axios
+        .post(url, data)
+      if (repos.data === "successfully logged in") {
+        toastFunction("successfully logged in !!", 1);
+      } else {
+        toastFunction("failed to login", 0);
+      }
+      setShowModal(false);
     setEmail("");
     setTheme("");
   };
