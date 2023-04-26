@@ -29,11 +29,15 @@ const Login = ({ toastFunction }) => {
     };
 
     // const URL = `http://localhost:5000/login`;
-    const URL = `https://graphicalpasswordbackend.onrender.com/login`;
+    // const URL = `https://graphicalpasswordbackend.onrender.com/login`;
+  const baseURL = process.env.REACT_APP_BACKEND_BASE_URL
+  const URL = baseURL + "/login"
 
     const handelSubmit = async () => {
         
-        const data = { email };
+      const data = { email };
+      console.log(baseURL)
+      console.log(URL);
         const resp = await axios.post(URL, data);
         
         // console.log("data = ", resp.data.Ids);
