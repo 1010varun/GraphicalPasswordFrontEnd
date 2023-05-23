@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# VisualCipher 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+VisualCipher is a safer alternative system to traditional text-based passwords. Instead of typing in a word or phrase, users create a unique image or sequence of 
+images as their password. This makes it much harder for hackers to guess or crack the password using automated software. Additionally, graphical passwords are easier
+to remember and more difficult for someone to shoulder surf and steal the password. Lastly, users can create more complex passwords with graphical passwords since the 
+the human brain is better at recognizing and remembering images than text.
 
-## Available Scripts
+## Flow Chart
+<img src="https://user-images.githubusercontent.com/103891145/230719888-0a5aabef-055b-45ca-8ab0-e091be0415ce.png">
 
-In the project directory, you can run:
+## Future Scope
+- **Virtual reality:** As virtual reality (VR) technology continues to develop, graphical passwords could be adapted to work in immersive VR environments, providing a unique and secure way to authenticate users.
+- **Machine learning:** Machine learning algorithms could be used to help users create more secure graphical passwords, by analyzing their preferences and past usage patterns.
+- **Multi-factor authentication:** Graphical passwords could be used as part of a multi-factor authentication system, along with other methods such as SMS codes or hardware tokens, to provide an extra layer of security.
 
-### `npm start`
+## Glimpses of our Project
+<img src="https://user-images.githubusercontent.com/103891145/230750914-67ed3c19-b62b-42f5-85c4-ec0e237610f1.png">
+<img src="https://user-images.githubusercontent.com/103891145/230750932-3a0f5471-c281-4294-94e5-c9170db29331.png">
+<img src="https://user-images.githubusercontent.com/103891145/230750908-4d83413a-7ef6-40e3-b4e0-936856644918.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
