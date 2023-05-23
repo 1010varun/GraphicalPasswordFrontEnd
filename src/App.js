@@ -9,9 +9,12 @@ import {
 
 
 // COMPONENTS
+import Home from "./components/Home";
+import Protected from "./components/Protected";
 import Navbar from "./components/Navbar";
-import Signup from "./Signup";
-import Login from "./Login";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import NoPage from "./components/Nopage";
 
 
 const App = () => {
@@ -27,12 +30,13 @@ const App = () => {
   return (
     <>
       <ToastContainer />
-      <Navbar />
+      <Navbar toastFunction={ toastFunction } />
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<Protected Component={<Home toastFunction={ toastFunction } />} />} /> 
           <Route path="/signup" element={ <Signup toastFunction={toastFunction}/> } />
           <Route path="/login" element={ <Login toastFunction={toastFunction}/> } />
-          <Route path="*" element={ <div>No page</div> } />
+          <Route path="*" element={ <NoPage/> } />
         </Routes>
       </BrowserRouter>
     </>
