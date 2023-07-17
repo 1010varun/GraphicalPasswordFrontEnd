@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "./Modal";
+import Loader from "./Loader";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -9,6 +10,7 @@ import { login } from "../features/user";
 
 const Login = ({ toastFunction }) => {
   const [email, setEmail] = useState("");
+  const [nextLoading, setNextLoading] = useState(false);
   const [theme, setTheme] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [links, setLinks] = useState([]);
@@ -21,6 +23,7 @@ const Login = ({ toastFunction }) => {
   const dispatch = useDispatch();
 
   const handelSubmit = () => {
+    setNextLoading(true);
     const url = baseURL + "/login";
     axios({
       method: "POST",
@@ -31,10 +34,12 @@ const Login = ({ toastFunction }) => {
       },
     })
       .then((resp) => {
+        setNextLoading(false);
         setAllId(resp.data.Ids);
         setShowModal(true);
       })
       .catch((err) => {
+        setNextLoading(false);
         toastFunction(err.response.data, 0);
       });
   };
@@ -55,6 +60,7 @@ const Login = ({ toastFunction }) => {
   };
 
   const handelModalSubmit = () => {
+    setNextLoading(true);
     const url = baseURL + '/loginVerify';
     const data = { id, theme };
     axios({
@@ -63,6 +69,7 @@ const Login = ({ toastFunction }) => {
       data
     })
       .then(() => {
+        setNextLoading(false);
         toastFunction("Successfully Logged in", 1);
         setEmail("");
         setTheme("");
@@ -74,6 +81,7 @@ const Login = ({ toastFunction }) => {
         navigate("/");
       })
       .catch((err) => {
+        setNextLoading(false);
         toastFunction(err.response.data, 0);
         setEmail("");
         setTheme("");
@@ -106,12 +114,14 @@ const Login = ({ toastFunction }) => {
               setTheme(e.target.value);
             }}
           ></input>
-          <button
-            className="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white"
-            onClick={handelSubmit}
-          >
-            Next
-          </button>
+          {nextLoading ? <Loader/> :
+            <button
+              className="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white"
+              onClick={handelSubmit} disabled={nextLoading}
+            >
+              Next
+            </button>
+          }
         </div>
       </div>
 
@@ -121,7 +131,8 @@ const Login = ({ toastFunction }) => {
             link={links}
             handelImageClick={handelImageClick}
             handelModalSubmit={handelModalSubmit}
-            type={"Login to Account"}
+            type={"Login"}
+            loading={nextLoading}
           />
         )}
       </div>

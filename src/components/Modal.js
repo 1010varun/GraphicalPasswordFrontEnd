@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "./Image";
+import Loader from "./Loader";
 
-const Modal = ({ link, handelImageClick, handelModalSubmit, type }) => {
+const Modal = ({ link, handelImageClick, handelModalSubmit, type, loading }) => {
 
   return (
     <>
@@ -18,13 +19,20 @@ const Modal = ({ link, handelImageClick, handelModalSubmit, type }) => {
           ))}
         </div>
         <div className="text-center">
-          <button
-            type="button"
-            onClick={handelModalSubmit}
-            class="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white font-medium text-sm px-5 py-2.5 text-center mb-2 mt-10"
-          >
-            {type}
-          </button>
+          {loading ? (
+            <div className="mt-10 mb-2">
+              <Loader />
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={handelModalSubmit}
+              disabled={loading}
+              class="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white font-medium text-sm px-5 py-2.5 text-center mb-2 mt-10"
+            >
+              {type}
+            </button>
+          )}
         </div>
       </div>
     </>

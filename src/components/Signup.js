@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "./Modal";
+import Loader from "./Loader";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ const Signup = ({toastFunction}) => {
     
 
   const [email, setEmail] = useState("");
+  const [nextLoading, setNextLoading] = useState(false);
   const [theme, setTheme] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [links, setLinks] = useState([]);
@@ -21,11 +23,13 @@ const Signup = ({toastFunction}) => {
   const dispatch = useDispatch();
 
   const handelSubmit = async () => {
+    setNextLoading(true);
     const { data } = await axios.get(URL);
     const photos = data.results;
-    photos.pop();
-      setLinks([...photos]);
-      setShowModal(true);
+    photos.pop();  
+    setLinks([...photos]);
+    setNextLoading(false);
+    setShowModal(true);
     };
   
 
@@ -34,7 +38,8 @@ const Signup = ({toastFunction}) => {
     };
 
   
-    const handelModalSubmit = async () => {
+  const handelModalSubmit = async () => {
+      setNextLoading(true);
       const baseURL = process.env.REACT_APP_BACKEND_BASE_URL;
       const url = baseURL + "/signup";
       const data = { theme, email, links, id };
@@ -44,6 +49,7 @@ const Signup = ({toastFunction}) => {
         data
       })
         .then(() => {
+          setNextLoading(false);
           toastFunction("successfully signed up !!", 1);
           setShowModal(false);
           setEmail("");
@@ -53,13 +59,13 @@ const Signup = ({toastFunction}) => {
           navigate("/");
         })
         .catch((err) => {
+          setNextLoading(false);
           toastFunction(err.response.data, 0);
           setShowModal(false);
           setEmail("");
           setTheme("");
         });
-    };
-  
+  };
 
   return (
     <>
@@ -83,22 +89,25 @@ const Signup = ({toastFunction}) => {
               setTheme(e.target.value);
             }}
           ></input>
-          <button
-            className="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white"
-            onClick={handelSubmit}
-          >
-            Next
-          </button>
+          {nextLoading ? <Loader /> :
+            <button
+              className="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white"
+              onClick={handelSubmit}
+            >
+              Next
+            </button>
+          }
         </div>
       </div>
-      
+
       <div className="flex justify-center">
         {showModal && (
           <Modal
             link={links}
             handelImageClick={handelImageClick}
             handelModalSubmit={handelModalSubmit}
-            type={"Create Account"}
+            type={"Sign Up"}
+            loading={nextLoading}
           />
         )}
       </div>
